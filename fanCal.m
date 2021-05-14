@@ -3,11 +3,11 @@
 function [alpha_2,Beta_1,Beta_2,T_t2,P_t2,M_2,T_2,P_2,A_1,A_2] = fanCal(T_t1,P_t1,omega,r,alpha_1,alpha_3,mdot,M_1,M_3,u_2_over_u_1,P_t3_over_P_t1)
 %% fluid's constants
 gamma = 1.4;
-c_p = 0.24; %Btu/(lbm*degreeR)
-R_g_c = 1716; %ft^2/(s^2*degree R)
-c_pg_c = 6006; %ft^2/(s^2*degree R)
-R = 53; % ft*lbf/(lbm*degree R)
-g_c =32.174;
+c_p = 1004; %Btu/(lbm*degreeR)
+R_g_c = 287; %ft^2/(s^2*degree R)
+c_pg_c = 1004; %ft^2/(s^2*degree R)
+R = 287; % ft*lbf/(lbm*degree R)
+g_c =1;
 %% assuming rotor 
 
 %% step 1 (rotor)
@@ -21,7 +21,7 @@ P_1 = P_t1/(1+((gamma-1)/2)*M_1^2)^(gamma/(gamma-1));
 
 MFP_1 = sqrt(gamma*g_c/R)*M_1*(1+((gamma-1)/2)*M_1^2)^((gamma+1)/(2*(gamma-1)));
 A_1 = (mdot*sqrt(T_t1))/(P_t1*cos(deg2rad(alpha_1))*MFP_1);
-omegar = omega*(r/r);
+omegar = omega*(r);
 v_1R = omegar-v_1;
 Beta_1 = rad2deg(tan(v_1R/u_1)^(-1));
 V_1R = sqrt(u_1^2+v_1R^2);
